@@ -44,10 +44,36 @@ status: DRIFT
 
 Why: the origin block defines attention as a query/key/value weighted vector mechanism; the usage block uses attention as audience focus in a creator market. Same label. Different object.
 
+## Tool 2: beamline display language
+
+Beamline Display Language turns lineage graphs into display primitives for directional time graphs.
+
+Properties:
+
+- time flows left → right by year
+- blocks carry year labels
+- edges carry `CLOSED`, `DRIFT`, `OPEN`, or `UNKNOWN`
+- the same display JSON can render in terminal or as a self-contained HTML file
+
+```bash
+python3 tools/beamline_display.py convert \
+  examples/beamlines/synthetic-lineage-graph.json \
+  --out /tmp/synthetic.beamline.display.json \
+  --title "Synthetic Beamline"
+
+python3 tools/beamline_display.py terminal /tmp/synthetic.beamline.display.json
+python3 tools/beamline_display.py html /tmp/synthetic.beamline.display.json --out /tmp/synthetic.beamline.html
+```
+
+Docs:
+
+- `docs/beamline-display-language.md`
+
 ## Schemas
 
 - `schemas/concept-block.schema.json`
 - `schemas/concept-equivalence-artifact.schema.json`
+- `schemas/beamline-display.schema.json`
 
 ## Beam pattern
 

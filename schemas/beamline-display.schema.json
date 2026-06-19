@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Marvin-The-Bodega-Cat/epistemic-toolbox/schemas/beamline-display.schema.json",
+  "title": "Beamline Display Language",
+  "description": "Directional left-to-right display primitives for epistemic beamlines, with time/year columns and CLOSED/DRIFT/OPEN status.",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "time_axis", "nodes", "edges"],
+  "properties": {
+    "schema_version": {"const": "epistemic.beamline.display.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "time_axis": {
+      "type": "object",
+      "required": ["direction", "unit"],
+      "properties": {
+        "direction": {"const": "left-to-right"},
+        "unit": {"const": "year"},
+        "min_year": {"type": ["integer", "null"]},
+        "max_year": {"type": ["integer", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "legend": {
+      "type": "object",
+      "properties": {
+        "CLOSED": {"type": "string"},
+        "DRIFT": {"type": "string"},
+        "OPEN": {"type": "string"},
+        "UNKNOWN": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "kind", "year", "column"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "enum": ["source", "concept", "artifact", "tweet", "blog", "note", "receipt", "unknown"]},
+          "year": {"type": ["integer", "null"]},
+          "column": {"type": ["integer", "null"]},
+          "status": {"type": "string", "enum": ["CLOSED", "DRIFT", "OPEN", "UNKNOWN"]},
+          "subtitle": {"type": "string"},
+          "url": {"type": "string"},
+          "source_ref": {"type": "string"},
+          "metadata": {"type": "object", "additionalProperties": true}
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "from", "to", "status", "relation"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "from": {"type": "string", "minLength": 1},
+          "to": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "enum": ["CLOSED", "DRIFT", "OPEN", "UNKNOWN"]},
+          "relation": {"type": "string"},
+          "distance": {"type": ["number", "null"]},
+          "year_delta": {"type": ["integer", "null"]},
+          "label": {"type": "string"},
+          "receipt_ref": {"type": "string"},
+          "metadata": {"type": "object", "additionalProperties": true}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

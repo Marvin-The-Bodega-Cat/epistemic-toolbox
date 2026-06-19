@@ -14,6 +14,7 @@ closure = ["closure-sdk>=1.0.0"]
 
 [project.scripts]
 concept-equivalence = "epistemic_toolbox.concept_equivalence:main"
+beamline-display = "epistemic_toolbox.beamline_display:main"
 
 [tool.setuptools]
 packages = ["epistemic_toolbox"]

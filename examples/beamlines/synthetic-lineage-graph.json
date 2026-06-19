@@ -1,0 +1,15 @@
+{
+  "artifact_id": "synthetic-beamline-example",
+  "warning": "Synthetic fixture: one closed edge, one drift edge, one open publication edge.",
+  "nodes": [
+    {"id": "source-1948", "type": "source_artifact", "year": 1948, "label": "Source Primitive"},
+    {"id": "source-2010", "type": "source_artifact", "year": 2010, "label": "Later Source"},
+    {"id": "artifact:concept", "type": "shape_of_trust_usage_concept", "year": 2026, "label": "Artifact Concept"},
+    {"id": "artifact:release", "type": "paper_artifact", "year": 2026, "label": "Released Artifact"}
+  ],
+  "edges": [
+    {"from": "source-1948", "to": "artifact:concept", "relation": "imports_measurement_primitive", "equivalence_status": "CLOSED", "normalized_distance": 0.02},
+    {"from": "source-2010", "to": "artifact:concept", "relation": "extends_beyond_source", "equivalence_status": "DRIFT", "normalized_distance": 0.31},
+    {"from": "artifact:concept", "to": "artifact:release", "relation": "constitutes_artifact_shape"}
+  ]
+}

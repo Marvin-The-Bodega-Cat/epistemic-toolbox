@@ -14,8 +14,18 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile tools
-        run: python -m py_compile tools/concept_equivalence.py
+        run: python -m py_compile tools/concept_equivalence.py tools/beamline_display.py src/epistemic_toolbox/*.py
       - name: Run concept equivalence fixture
         run: |
           python tools/concept_equivalence.py             examples/papers/attention-origin.concept-block.json             examples/papers/attention-usage-metaphor.concept-block.json             --out receipts/concept-equivalence/attention.synthetic.artifact.json             --pretty
           python -m json.tool receipts/concept-equivalence/attention.synthetic.artifact.json > /dev/null
+      - name: Run beamline display fixture
+        run: |
+          PYTHONPATH=src python tools/beamline_display.py convert examples/beamlines/synthetic-lineage-graph.json --out /tmp/synthetic.beamline.display.json --title Synthetic
+          PYTHONPATH=src python tools/beamline_display.py terminal /tmp/synthetic.beamline.display.json --out /tmp/synthetic.beamline.txt
+          PYTHONPATH=src python tools/beamline_display.py html /tmp/synthetic.beamline.display.json --out /tmp/synthetic.beamline.html
+          python -m json.tool /tmp/synthetic.beamline.display.json > /dev/null
+          grep -q "DRIFT" /tmp/synthetic.beamline.html
+          grep -q "1948" /tmp/synthetic.beamline.txt
+      - name: Run unit tests
+        run: PYTHONPATH=src python -m unittest discover -s tests
