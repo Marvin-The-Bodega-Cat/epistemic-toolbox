@@ -1,0 +1,90 @@
+{
+  "artifact_id": "artifact-concept-equivalence-attention-attention-origin-transformer-vs-attention-usage-metaphor",
+  "closure": {
+    "backend": "closure_sdk_1.0.0",
+    "normalized_distance": 0.246311,
+    "ordered_facets": [
+      "definition",
+      "causal_role",
+      "assumptions",
+      "scope",
+      "measurement_or_use",
+      "exclusions",
+      "downstream_implications"
+    ],
+    "sigma": 0.773808
+  },
+  "collapse_decision": "Collapsed as DRIFT. Treat the citation as concept-preserving only if reviewer accepts the facet extraction and the listed mismatches are resolved.",
+  "concept_id": "attention",
+  "facet_results": [
+    {
+      "facet": "definition",
+      "lexical_overlap": 0.0,
+      "normalized_distance": 0.477472,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 1.500022,
+      "verdict": "drift_risk"
+    },
+    {
+      "facet": "causal_role",
+      "lexical_overlap": 0.047619,
+      "normalized_distance": 0.21416,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 0.672804,
+      "verdict": "compatible_or_needs_review"
+    },
+    {
+      "facet": "assumptions",
+      "lexical_overlap": 0.043478,
+      "normalized_distance": 0.417454,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 1.311471,
+      "verdict": "drift_risk"
+    },
+    {
+      "facet": "scope",
+      "lexical_overlap": 0.055556,
+      "normalized_distance": 0.469701,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 1.475608,
+      "verdict": "drift_risk"
+    },
+    {
+      "facet": "measurement_or_use",
+      "lexical_overlap": 0.166667,
+      "normalized_distance": 0.423359,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 1.330021,
+      "verdict": "drift_risk"
+    },
+    {
+      "facet": "exclusions",
+      "lexical_overlap": 0.217391,
+      "normalized_distance": 0.091752,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 0.288248,
+      "verdict": "compatible_or_needs_review"
+    },
+    {
+      "facet": "downstream_implications",
+      "lexical_overlap": 0.043478,
+      "normalized_distance": 0.447814,
+      "note": "Geometric receipt over extracted facet text; human review required for semantic finality.",
+      "sigma": 1.40685,
+      "verdict": "drift_risk"
+    }
+  ],
+  "method": "BTA concept-equivalence beam pattern: extracted facets, ordered Closure-SDK S3 composition, per-facet mismatch receipts, collapse status.",
+  "mismatches": [
+    "definition: drift_risk (normalized_distance=0.477, lexical_overlap=0.000)",
+    "assumptions: drift_risk (normalized_distance=0.417, lexical_overlap=0.043)"
+  ],
+  "origin_block": "concept-block-attention-origin-transformer",
+  "schema_version": "mindware.concept.equivalence.v1",
+  "status": "DRIFT",
+  "usage_block": "concept-block-attention-usage-metaphor",
+  "warnings": [
+    "Closure geometry is a receipt over structured extraction, not an oracle over raw paper meaning.",
+    "CLOSED requires reviewer acceptance of the extracted facets, not only a low sigma score."
+  ]
+}

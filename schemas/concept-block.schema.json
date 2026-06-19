@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mindware.local/schemas/concept-block.schema.json",
+  "title": "Mindware Concept Block",
+  "type": "object",
+  "required": ["schema_version", "id", "concept_id", "role", "paper", "spans", "quoted_definition", "local_context", "facets", "known_limits"],
+  "properties": {
+    "schema_version": {"const": "mindware.concept.block.v1"},
+    "id": {"type": "string", "pattern": "^concept-block-[a-zA-Z0-9._-]+$"},
+    "concept_id": {"type": "string", "minLength": 2},
+    "role": {"enum": ["origin", "usage", "bridge"]},
+    "paper": {
+      "type": "object",
+      "required": ["title", "authors", "year", "uri"],
+      "properties": {
+        "title": {"type": "string"},
+        "authors": {"type": "array", "items": {"type": "string"}},
+        "year": {"type": ["integer", "string"]},
+        "uri": {"type": "string"},
+        "venue": {"type": "string"}
+      }
+    },
+    "spans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["locator", "quote"],
+        "properties": {
+          "locator": {"type": "string"},
+          "quote": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "quoted_definition": {"type": "string", "minLength": 1},
+    "local_context": {"type": "string", "minLength": 1},
+    "facets": {
+      "type": "object",
+      "required": ["definition", "causal_role", "assumptions", "scope", "measurement_or_use", "exclusions", "downstream_implications"],
+      "properties": {
+        "definition": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "causal_role": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "scope": {"type": "array", "items": {"type": "string"}},
+        "measurement_or_use": {"type": "array", "items": {"type": "string"}},
+        "exclusions": {"type": "array", "items": {"type": "string"}},
+        "downstream_implications": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "near_terms": {"type": "array", "items": {"type": "string"}},
+    "known_limits": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "mindware.concept.block.v1",
+  "id": "concept-block-attention-origin-transformer",
+  "concept_id": "attention",
+  "role": "origin",
+  "paper": {
+    "title": "Attention Is All You Need",
+    "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Lukasz Kaiser", "Illia Polosukhin"],
+    "year": 2017,
+    "uri": "https://arxiv.org/abs/1706.03762",
+    "venue": "NeurIPS"
+  },
+  "spans": [
+    {
+      "locator": "Section 3.2",
+      "quote": "An attention function can be described as mapping a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors.",
+      "note": "Canonical mechanism statement for attention in the Transformer paper."
+    }
+  ],
+  "quoted_definition": "Attention maps a query and key-value pairs to an output vector by computing compatibility weights over the values.",
+  "local_context": "The concept is a differentiable mechanism inside a neural sequence model, replacing recurrent/convolutional sequence alignment with learned weighted access over positions.",
+  "facets": {
+    "definition": ["A vector operation mapping query plus key-value pairs to an output vector by weighted combination."],
+    "causal_role": ["Selects which sequence positions contribute to each representation update.", "Allows token representations to condition on other positions."],
+    "assumptions": ["Inputs are embedded as vectors.", "Compatibility between queries and keys can be scored.", "Values can be combined by learned weights."],
+    "scope": ["Neural sequence transduction and representation learning.", "Applies to model internals, not human attention by default."],
+    "measurement_or_use": ["Operationalized through scaled dot-product attention and multi-head attention layers."],
+    "exclusions": ["Does not mean generic salience unless mapped to query-key-value weighting.", "Does not by itself imply interpretability of human cognition."],
+    "downstream_implications": ["Sequence modeling can parallelize contextual access.", "Long-range dependency handling becomes an architectural primitive."]
+  },
+  "near_terms": ["alignment", "salience", "contextual weighting", "multi-head attention"],
+  "known_limits": ["This block is a synthetic public-safe extraction, not a full literature review."]
+}

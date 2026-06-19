@@ -1,0 +1,22 @@
+[project]
+name = "epistemic-toolbox"
+version = "0.1.0"
+description = "Epistemic receipt tools for concept equivalence and reference integrity"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Marvin The Bodega Cat"}]
+keywords = ["epistemics", "concept-equivalence", "citations", "closure-sdk", "mindware"]
+dependencies = []
+
+[project.optional-dependencies]
+closure = ["closure-sdk>=1.0.0"]
+
+[project.scripts]
+concept-equivalence = "epistemic_toolbox.concept_equivalence:main"
+
+[tool.setuptools]
+packages = ["epistemic_toolbox"]
+
+[tool.setuptools.package-dir]
+epistemic_toolbox = "src/epistemic_toolbox"

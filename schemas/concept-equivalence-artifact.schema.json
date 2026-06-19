@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mindware.local/schemas/concept-equivalence-artifact.schema.json",
+  "title": "Mindware Concept Equivalence Artifact",
+  "type": "object",
+  "required": ["schema_version", "artifact_id", "concept_id", "origin_block", "usage_block", "method", "closure", "facet_results", "status", "collapse_decision", "warnings"],
+  "properties": {
+    "schema_version": {"const": "mindware.concept.equivalence.v1"},
+    "artifact_id": {"type": "string", "pattern": "^artifact-concept-equivalence-[a-zA-Z0-9._-]+$"},
+    "concept_id": {"type": "string"},
+    "origin_block": {"type": "string"},
+    "usage_block": {"type": "string"},
+    "method": {"type": "string"},
+    "closure": {
+      "type": "object",
+      "required": ["backend", "ordered_facets", "sigma", "normalized_distance"],
+      "properties": {
+        "backend": {"type": "string"},
+        "ordered_facets": {"type": "array", "items": {"type": "string"}},
+        "sigma": {"type": "number"},
+        "normalized_distance": {"type": "number"}
+      }
+    },
+    "facet_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["facet", "sigma", "normalized_distance", "lexical_overlap", "verdict"],
+        "properties": {
+          "facet": {"type": "string"},
+          "sigma": {"type": "number"},
+          "normalized_distance": {"type": "number"},
+          "lexical_overlap": {"type": "number"},
+          "verdict": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "status": {"enum": ["CLOSED", "NEAR_CLOSED", "COMPATIBLE_EXTENSION", "NARROWED", "BROADENED", "DRIFT", "FORK", "DECORATIVE"]},
+    "collapse_decision": {"type": "string"},
+    "mismatches": {"type": "array", "items": {"type": "string"}},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

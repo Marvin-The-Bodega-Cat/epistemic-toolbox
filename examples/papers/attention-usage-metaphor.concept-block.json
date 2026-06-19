@@ -1,0 +1,33 @@
+{
+  "schema_version": "mindware.concept.block.v1",
+  "id": "concept-block-attention-usage-metaphor",
+  "concept_id": "attention",
+  "role": "usage",
+  "paper": {
+    "title": "A Hypothetical Paper About Creator Attention Markets",
+    "authors": ["Synthetic Author"],
+    "year": 2026,
+    "uri": "synthetic://creator-attention-markets",
+    "venue": "Mindware synthetic fixture"
+  },
+  "spans": [
+    {
+      "locator": "Section 2",
+      "quote": "We use attention to mean the audience's scarce focus on parts of a creative project, following the broad lesson of attention mechanisms in machine learning.",
+      "note": "Synthetic usage intentionally drifts from the Transformer mechanism."
+    }
+  ],
+  "quoted_definition": "Attention is the audience's scarce focus on parts of a creative project.",
+  "local_context": "The paper uses attention as an economic/social metaphor for audience focus, not as a query-key-value mechanism in a neural model.",
+  "facets": {
+    "definition": ["Scarce human or network focus allocated to parts of a creative project."],
+    "causal_role": ["Determines which project components receive feedback, sharing, or marketing effort."],
+    "assumptions": ["Audiences have limited focus.", "Visible focus can shape project development."],
+    "scope": ["Creative project coordination and social markets."],
+    "measurement_or_use": ["Operationalized through views, comments, shares, wallet-linked actions, and feedback density."],
+    "exclusions": ["Does not require vector embeddings, query-key scoring, or differentiable weighted value aggregation."],
+    "downstream_implications": ["Attention can become a resource allocated by incentives.", "Feedback markets can steer creative evolution."]
+  },
+  "near_terms": ["audience focus", "salience", "marketing", "feedback allocation"],
+  "known_limits": ["Synthetic fixture designed to produce drift; not a claim about an actual paper."]
+}
