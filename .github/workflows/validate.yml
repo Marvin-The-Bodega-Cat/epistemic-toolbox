@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile tools
-        run: python -m py_compile tools/concept_equivalence.py tools/beamline_display.py src/epistemic_toolbox/*.py
+        run: python -m py_compile tools/concept_equivalence.py tools/beamline_display.py tools/bridge_probe.py src/epistemic_toolbox/*.py
       - name: Run concept equivalence fixture
         run: |
           python tools/concept_equivalence.py             examples/papers/attention-origin.concept-block.json             examples/papers/attention-usage-metaphor.concept-block.json             --out receipts/concept-equivalence/attention.synthetic.artifact.json             --pretty
@@ -27,5 +27,10 @@ jobs:
           python -m json.tool /tmp/synthetic.beamline.display.json > /dev/null
           grep -q "DRIFT" /tmp/synthetic.beamline.html
           grep -q "1948" /tmp/synthetic.beamline.txt
+      - name: Run bridge probe fixture
+        run: |
+          PYTHONPATH=src python tools/bridge_probe.py pair examples/papers/attention-origin.concept-block.json examples/papers/attention-usage-metaphor.concept-block.json --out /tmp/attention.bridge-probe.json --top 3
+          python -m json.tool /tmp/attention.bridge-probe.json > /dev/null
+          grep -q "searched_candidates" /tmp/attention.bridge-probe.json
       - name: Run unit tests
         run: PYTHONPATH=src python -m unittest discover -s tests

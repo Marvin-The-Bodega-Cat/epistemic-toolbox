@@ -69,6 +69,23 @@ Docs:
 
 - `docs/beamline-display-language.md`
 
+## Tool 3: bridge probe
+
+Bridge Probe searches for the nearest synthetic bridge block between two drifting concept blocks.
+
+It generates all `2^7 = 128` facet hybrids, measures `origin → bridge` and `bridge → usage`, then ranks candidates by one-side closure and reduced max-hop drift.
+
+```bash
+python3 tools/bridge_probe.py pair \
+  examples/papers/attention-origin.concept-block.json \
+  examples/papers/attention-usage-metaphor.concept-block.json \
+  --out /tmp/attention.bridge-probe.json
+```
+
+Docs:
+
+- `docs/bridge-probe.md`
+
 ## Schemas
 
 - `schemas/concept-block.schema.json`
